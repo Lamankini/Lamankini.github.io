@@ -13,25 +13,30 @@
     <script>
         /*
          * ==========================================
-         * ADD / CHANGE YOUR DESTINATIONS HERE
+         * YOUR 2 AFFILIATE LINKS
          * ==========================================
          */
-        const DESTINATIONS = [
-            "https://limauwin.club/en/register?ref=12877528",
-            "https://limauwin.club/en/register?ref=49306995",
-    
-        ];
+        const AFFILIATE_A = "https://limauwin.club/en/register?ref=12877528";
+        const AFFILIATE_B = "https://limauwin.club/en/register?ref=49306995";
 
         /*
-         * Randomly choose one destination
+         * ==========================================
+         * ROTATE EVERY 5 MINUTES
+         * ==========================================
          */
+        const FIVE_MINUTES = 5 * 60 * 1000;
+
+        // Creates a global 5-minute time slot.
+        const slot = Math.floor(Date.now() / FIVE_MINUTES);
+
+        // Even slot = A, odd slot = B.
         const destination =
-            DESTINATIONS[Math.floor(Math.random() * DESTINATIONS.length)];
+            slot % 2 === 0 ? AFFILIATE_A : AFFILIATE_B;
 
         /*
-         * Preserve ALL incoming tracking parameters:
-         * fbclid, utm_source, utm_medium,
-         * utm_campaign, utm_content, gclid, etc.
+         * ==========================================
+         * PRESERVE TRACKING PARAMETERS
+         * ==========================================
          */
         const destinationUrl = new URL(destination);
 
@@ -44,7 +49,9 @@
         });
 
         /*
-         * Redirect
+         * ==========================================
+         * REDIRECT
+         * ==========================================
          */
         window.location.replace(destinationUrl.toString());
     </script>
