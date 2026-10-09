@@ -1,0 +1,32 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+
+<body>
+    <p>Redirecting...</p>
+
+    <script>
+        // Your destination and fixed tracking parameters
+        const DESTINATION =
+            "http://travlog10.com/?lBedBEA4L&pid=1448187267306642";
+
+        // Preserve every parameter received by the GitHub link
+        const queryString = window.location.search;
+
+        // The destination already contains "?", so append with "&"
+        const destinationUrl =
+            DESTINATION +
+            (queryString ? "&" + queryString.substring(1) : "");
+
+        // Redirect
+        window.location.replace(destinationUrl);
+    </script>
+</body>
+</html>
+```
